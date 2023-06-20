@@ -79,6 +79,8 @@ def solve_subset(subset):
         m_subset += q_bar_subset[j] - M * (1 - v_subset[j]) <= q_min_subset
     m_subset += pl.lpSum(v_subset[j] for j in J) >= 1
 
+    # 设置输出级别为Minimal
+    pl.LpSolverDefault.msg = pl.LpSolverMsg.MINIMA
     # 求解子模型
     m_subset.solve()
 
